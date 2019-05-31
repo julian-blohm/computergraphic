@@ -1,29 +1,30 @@
 import * as _three from "three";
 import { OrbitControls } from "three-orbitcontrols-ts";
 
+import Test from "../fractrals/Test";
+import Fractral from "../fractrals/Fractral";
+
 export default class Scene {
   private scene: _three.Scene;
   private camera: _three.PerspectiveCamera;
   private renderer: _three.WebGLRenderer;
   private controller: OrbitControls;
-  private state: number;
-  private stateList: string[];
+  private objectIndex: number;
+  private objectList: Fractral[];
   private play: boolean;
 
-  public constructor(
-    antialias: boolean,
-    fov: number,
-    aspect: number,
-    near: number,
-    far: number
-  ) {
+  public constructor() {
     this.scene = new _three.Scene();
-    this.renderer = new _three.WebGLRenderer({ antialias: antialias });
-    this.camera = new _three.PerspectiveCamera(fov, aspect, near, far);
+    this.renderer = new _three.WebGLRenderer({ antialias: true });
+    this.camera = new _three.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.01,
+      1000
+    );
     this.controller = new OrbitControls(this.camera, this.renderer.domElement);
-    this.state = -1;
-    this.stateList = [];
-    this.state = null;
+    this.objectList = [];
+    this.objectIndex = null;
     this.play = false;
   }
 
@@ -46,19 +47,39 @@ export default class Scene {
     spotLight.shadow.mapSize.width = 1024;
     spotLight.shadow.mapSize.height = 1024;
     this.scene.add(spotLight);
-  }
-
-  private run(): void {
-    if (this.play) {
-      this.controller.update();
-      //this.stateList[this.state].update(delta);
-    }
-    this.renderer.render(this.scene, this.camera);
-    requestAnimationFrame(this.run.bind(this));
+    this.addObjects();
+    this.renderObject();
   }
 
   public start(): void {
     this.play = true;
     this.run();
+  }
+
+  private run(): void {
+    if (this.play) {
+      this.controller.update();
+      this.objectList[0].update();
+    }
+    this.renderer.render(this.scene, this.camera);
+    requestAnimationFrame(this.run.bind(this));
+  }
+
+  private renderObject(): void {
+    this.controller.enabled = true;
+    this.objectList[0].init();
+    this.run();
+  }
+
+  private addObjects(): void {
+    this.objectList.push(new Test(this));
+  }
+
+  public get getScene(): _three.Scene {
+    return this.scene;
+  }
+
+  public get getCamera(): _three.Camera {
+    return this.camera;
   }
 }
