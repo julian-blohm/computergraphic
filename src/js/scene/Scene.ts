@@ -2,7 +2,7 @@ import * as _three from 'three'
 import { OrbitControls } from 'three-orbitcontrols-ts'
 
 import Cube from '../fractrals/Cube'
-import Fractral from '../fractrals/Fractral'
+import { stringify } from 'querystring'
 
 export default class Scene {
   private scene: _three.Scene
@@ -10,7 +10,7 @@ export default class Scene {
   private renderer: _three.WebGLRenderer
   private controller: OrbitControls
   private objectIndex: number
-  private objectList: Fractral[]
+  private objectList: any[]
   private play: boolean
 
   public constructor() {
@@ -42,8 +42,16 @@ export default class Scene {
     spotLight.shadow.mapSize.width = 1024
     spotLight.shadow.mapSize.height = 1024
     this.scene.add(spotLight)
-    this.addObjects()
+    this.addObjectsToList()
+    this.renderObjectListMenu()
     this.renderObject()
+  }
+
+  private addObjectsToList(): void {
+    this.objectList.push(new Cube(this, 'Cube 1', 'red'))
+    this.objectList.push(new Cube(this, 'Cube 2', 'green'))
+    this.objectList.push(new Cube(this, 'Cube 3'))
+    this.objectList.push(new Cube(this, 'Cube 4', 'yellow'))
   }
 
   public start(): void {
@@ -90,10 +98,15 @@ export default class Scene {
     }
   }
 
-  private addObjects(): void {
-    this.objectList.push(new Cube(this))
+  private renderObjectListMenu(): void {
+    const objectListMenu = document.getElementById('objectSelect')
+    for (let i = 0; i < this.objectList.length; i++) {
+      const opt = document.createElement('option')
+      opt.appendChild(document.createTextNode(this.objectList[i].getName))
+      opt.value = i.toString()
+      objectListMenu.appendChild(opt)
+    }
   }
-
   public get getScene(): _three.Scene {
     return this.scene
   }

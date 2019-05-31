@@ -2,11 +2,13 @@ import Scene from '../scene/Scene'
 
 export default abstract class Fractral {
   private scene: Scene
+  private name: string
   private color: string
   private level: number
 
-  public constructor(scene: Scene, color = 'white', level = 2) {
+  public constructor(scene: Scene, name: string, color = 'white', level = 2) {
     this.scene = scene
+    this.name = name
     this.color = color
     this.level = level
   }
@@ -60,6 +62,10 @@ export default abstract class Fractral {
   //GET Methods
   public get getMainScene(): Scene {
     return this.scene
+  }
+
+  public get getName(): string {
+    return this.name
   }
   public get getColor(): string {
     return this.color
