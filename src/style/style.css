@@ -11,3 +11,9 @@ canvas {
   width: 100vw;
   height: 100vh;
 }
+
+.menu-container {
+  position: relative;
+  z-index: 10;
+  color: white;
+}
