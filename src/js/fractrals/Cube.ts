@@ -2,6 +2,7 @@ import Fractral from './Fractral'
 import * as _three from 'three'
 
 export default class Cube extends Fractral {
+  //Test Cube
   public init(): void {
     // Create a Cube Mesh with basic material
     var geometry = new _three.BoxGeometry(1, 1, 1)
