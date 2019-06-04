@@ -8,7 +8,6 @@ export default class Mengersponge extends Fractral {
   private z: number
   private width: number
   private state: number
-  private object: _three.Object3D
 
   public constructor(
     x: number,
@@ -27,12 +26,10 @@ export default class Mengersponge extends Fractral {
     this.z = z
     this.width = width
     this.state = state
-    this.object = new _three.Object3D()
   }
 
   public init(): void {
     const scene = this.getMainScene.getScene
-    const camera = this.getMainScene.getCamera
     // Add cube to Scene
     this.calcMengersponge(scene, this.x, this.y, this.z, this.width, this.state, this.getLevel, this.getColor)
     // Add light to scene
