@@ -2,7 +2,7 @@ import * as _three from 'three'
 import { OrbitControls } from 'three-orbitcontrols-ts'
 
 import Cube from '../fractrals/Cube'
-import { stringify } from 'querystring'
+import Mengersponge from '../fractrals/Mengersponge'
 
 export default class Scene {
   private scene: _three.Scene
@@ -16,10 +16,10 @@ export default class Scene {
   public constructor() {
     this.scene = new _three.Scene()
     this.renderer = new _three.WebGLRenderer({ antialias: true })
-    this.camera = new _three.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000)
+    this.camera = new _three.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 3000)
     this.controller = new OrbitControls(this.camera, this.renderer.domElement)
     this.objectList = []
-    this.objectIndex = null
+    this.objectIndex = 0
     this.play = false
   }
 
@@ -49,6 +49,7 @@ export default class Scene {
 
   private addObjectsToList(): void {
     this.objectList.push(new Cube(this, 'Cube 1', 'red'))
+    this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 2, this, 'Mengersponge', 'red'))
     this.objectList.push(new Cube(this, 'Cube 2', 'green'))
     this.objectList.push(new Cube(this, 'Cube 3'))
     this.objectList.push(new Cube(this, 'Cube 4', 'yellow'))
@@ -62,7 +63,7 @@ export default class Scene {
   private run(): void {
     if (this.play) {
       this.controller.update()
-      this.objectList[0].update()
+      this.objectList[this.objectIndex].update()
     }
     this.renderer.render(this.scene, this.camera)
     requestAnimationFrame(this.run.bind(this))
