@@ -12,6 +12,7 @@ export default abstract class Fractral {
     this.color = color
     this.level = level
   }
+  //gets overwritten
   public init() {}
 
   public update(): void {
