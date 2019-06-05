@@ -49,7 +49,7 @@ export default class Scene {
 
   private addObjectsToList(): void {
     this.objectList.push(new Cube(this, 'Cube 1', 'red'))
-    this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 2, this, 'Mengersponge', 'red'))
+    this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 3, this, 'Mengersponge', 'red'))
     this.objectList.push(new Cube(this, 'Cube 2', 'green'))
     this.objectList.push(new Cube(this, 'Cube 3'))
     this.objectList.push(new Cube(this, 'Cube 4', 'yellow'))
