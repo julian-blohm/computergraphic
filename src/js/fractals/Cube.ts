@@ -1,4 +1,4 @@
-import Fractral from './Fractral'
+import Fractral from './Fractal'
 import * as _three from 'three'
 
 export default class Cube extends Fractral {
