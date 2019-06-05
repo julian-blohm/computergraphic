@@ -6,12 +6,13 @@ export default abstract class Fractral {
   private color: string
   private level: number
 
-  public constructor(scene: Scene, name: string, color = 'white', level = 2) {
+  public constructor(scene: Scene, name: string, color = 'white', level = 0) {
     this.scene = scene
     this.name = name
     this.color = color
     this.level = level
   }
+  //gets overwritten
   public init() {}
 
   public update(): void {
@@ -39,10 +40,10 @@ export default abstract class Fractral {
       '<label>Level</label>\
     <br />\
     <select id="level">\
+      <option value="0">0</option>\
+      <option value="1">1</option>\
       <option value="2">2</option>\
-      <option value="4">4</option>\
-      <option value="6">6</option>\
-      <option value="8">8</option>\
+      <option value="3">3</option>\
     </select>\
     <br />\
     <label>Farbe</label>\
