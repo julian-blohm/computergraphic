@@ -3,6 +3,7 @@ import { OrbitControls } from 'three-orbitcontrols-ts'
 
 import Cube from '../fractrals/Cube'
 import Mengersponge from '../fractrals/Mengersponge'
+import SierpinskiTriangle from '../fractrals/SierpinskiTriangle';
 
 export default class Scene {
   private scene: _three.Scene
@@ -53,6 +54,7 @@ export default class Scene {
     this.objectList.push(new Cube(this, 'Cube 2', 'green'))
     this.objectList.push(new Cube(this, 'Cube 3'))
     this.objectList.push(new Cube(this, 'Cube 4', 'yellow'))
+    this.objectList.push(new SierpinskiTriangle(-1.5, -1.5, -1.5, 3, 0, 3, this, 'Dreieck', 'red'))
   }
 
   public start(): void {
