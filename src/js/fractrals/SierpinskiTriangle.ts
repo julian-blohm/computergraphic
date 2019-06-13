@@ -45,29 +45,24 @@ export default class SierpinskiTriangle extends Fractral {
     
   }
   
-  /*
-  private calcCube(x: number, y: number, z: number, width: number, color: string): _three.Mesh {
-    const CUBE_MATERIAL = new _three.MeshPhongMaterial({ color: color, flatShading: true, shininess: 2 })
-    const geometry = new _three.BoxBufferGeometry(width, width, width)
-    const cube = new _three.Mesh(geometry, CUBE_MATERIAL)
-    cube.position.set(x, y, z)
-    cube.receiveShadow = true
-    return cube
-  }
-  */
+
 
   private calcTriangle(): _three.Mesh {
 
     const triangleGeometry = new _three.Geometry();
-    triangleGeometry.vertices.push(new _three.Vector3(0.0, 1.0, 0.0));
-    triangleGeometry.vertices.push(new _three.Vector3(-1.0, -1.0, 0.0));
-    triangleGeometry.vertices.push(new _three.Vector3(1.0, -1.0, 0.0));
+    const v1 = new _three.Vector3(-2, -2, 0);
+    const v2 = new _three.Vector3(2, -2, 0);
+    const v3 = new _three.Vector3(0, -2, 0);
+
+    triangleGeometry.vertices.push(v1);
+    triangleGeometry.vertices.push(v2);
+    triangleGeometry.vertices.push(v3);
     triangleGeometry.faces.push(new _three.Face3(0, 1, 2));
 
     const triangleMaterial = new _three.MeshBasicMaterial({ color:0xFFFFFF, side: _three.DoubleSide }); 
     const triangle = new _three.Mesh(triangleGeometry, triangleMaterial);  
    
-    triangle.position.set(-1.5, 0.0, 4.0);
+    // triangle.position.set(-1.5, 0.0, 4.0);
     triangle.receiveShadow = true;
 
     return triangle;
