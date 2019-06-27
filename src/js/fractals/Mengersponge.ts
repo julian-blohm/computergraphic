@@ -16,11 +16,12 @@ export default class Mengersponge extends Fractral {
     width: number,
     state: number,
     level: number,
+    type: string,
     scene: Scene,
     name: string,
     color: string,
   ) {
-    super(scene, name, color, level)
+    super(type, scene, name, color, level)
     this.x = x
     this.y = y
     this.z = z
