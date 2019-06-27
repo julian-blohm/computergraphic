@@ -1,11 +1,14 @@
 import * as _three from 'three'
+import * as _pixi from 'pixi.js'
 import { OrbitControls } from 'three-orbitcontrols-ts'
 
 import Cube from '../fractals/Cube'
 import Mengersponge from '../fractals/Mengersponge'
 import SierpinskiCarpet from '../fractals/SierpinskiCarpet'
+import PixiShape from '../fractals/PixiShape';
 
 export default class Scene {
+  private pixiScene: _pixi.Application
   private scene: _three.Scene
   private camera: _three.PerspectiveCamera
   private renderer: _three.WebGLRenderer
@@ -15,8 +18,20 @@ export default class Scene {
   private play: boolean
 
   public constructor() {
+    this.pixiScene = new _pixi.Application({
+      width: 256,         // default: 800
+      height: 256,        // default: 600
+      antialias: true,    // default: false
+      transparent: false, // default: false
+      resolution: 1,       // default: 1
+    })
+    //adding pixijs canvas (its hidden)
+    document.body.appendChild(this.pixiScene.view);
+    document.body.getElementsByTagName('canvas')[0].setAttribute('id', 'pixiCanvas')
+    //adding threejs canvas
     this.scene = new _three.Scene()
     this.renderer = new _three.WebGLRenderer({ antialias: true })
+    this.renderer.domElement.id = 'threeCanvas'
     this.camera = new _three.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 3000)
     this.controller = new OrbitControls(this.camera, this.renderer.domElement)
     this.objectList = []
@@ -49,12 +64,13 @@ export default class Scene {
   }
 
   private addObjectsToList(): void {
-    this.objectList.push(new Cube(this, 'Cube 1', 'red'))
-    this.objectList.push(new SierpinskiCarpet(-1.5, -1.5, 3, 0, 0, this, 'Sierpinski', 'white'))
-    this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 0, this, 'Mengersponge', 'red'))
-    this.objectList.push(new Cube(this, 'Cube 2', 'green'))
-    this.objectList.push(new Cube(this, 'Cube 3'))
-    this.objectList.push(new Cube(this, 'Cube 4', 'yellow'))
+    this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
+    this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
+    this.objectList.push(new SierpinskiCarpet(-1.5, -1.5, 3, 0, 0, '3d', this, 'Sierpinski', 'white'))
+    this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 0, '3d', this, 'Mengersponge', 'red'))
+    this.objectList.push(new Cube('3d', this, 'Cube 2', 'green'))
+    this.objectList.push(new Cube('3d', this, 'Cube 3'))
+    this.objectList.push(new Cube('3d', this, 'Cube 4', 'yellow'))
   }
 
   public start(): void {
@@ -72,6 +88,7 @@ export default class Scene {
   }
 
   private renderObject(): void {
+    this.changeCanvas(this.objectIndex)
     this.controller.enabled = true
     this.objectList[0].init()
     this.objectList[0].renderMenu()
@@ -79,6 +96,7 @@ export default class Scene {
   }
 
   public changeObject(objectIndex: number): void {
+    this.changeCanvas(this.objectIndex)
     this.removeObjects(this.scene)
     this.controller.enabled = true
     this.objectIndex = objectIndex
@@ -87,6 +105,7 @@ export default class Scene {
   }
 
   public updateObject(objectIndex: number): void {
+    this.changeCanvas(this.objectIndex)
     this.removeObjects(this.scene)
     this.controller.enabled = true
     this.objectIndex = objectIndex
@@ -110,11 +129,27 @@ export default class Scene {
       objectListMenu.appendChild(opt)
     }
   }
+
   public get getScene(): _three.Scene {
     return this.scene
   }
 
+  public get getPixiScene(): _pixi.Application {
+    return this.pixiScene
+  }
+
   public get getCamera(): _three.Camera {
     return this.camera
+  }
+
+  public changeCanvas(objectIndex: number): void {
+    if(this.objectList[objectIndex].getType === '3d') {
+      document.getElementById('pixiCanvas').style.display = 'none'
+      document.getElementById('threeCanvas').style.display = 'block'
+    }
+    if(this.objectList[objectIndex].getType === '2d') {
+      document.getElementById('pixiCanvas').style.display = 'block'
+      document.getElementById('threeCanvas').style.display = 'none'
+    }
   }
 }

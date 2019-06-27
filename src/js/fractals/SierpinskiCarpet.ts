@@ -14,11 +14,12 @@ export default class SierpinskiCarpet extends Fractal {
     width: number,
     state: number,
     level: number,
+    type: string,
     scene: Scene,
     name: string,
     color: string,
   ) {
-    super(scene, name, color, level)
+    super(type, scene, name, color, level)
     this.x = x
     this.y = y
     this.width = width

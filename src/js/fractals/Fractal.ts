@@ -5,12 +5,14 @@ export default abstract class Fractral {
   private name: string
   private color: string
   private level: number
+  private type : string
 
-  public constructor(scene: Scene, name: string, color = 'white', level = 0) {
+  public constructor(type: string, scene: Scene, name: string, color = 'white', level = 0) {
     this.scene = scene
     this.name = name
     this.color = color
     this.level = level
+    this.type = type
   }
   //gets overwritten
   public init() {}
@@ -68,11 +70,17 @@ export default abstract class Fractral {
   public get getName(): string {
     return this.name
   }
+
   public get getColor(): string {
     return this.color
   }
+
   public get getLevel(): number {
     return this.level
+  }
+
+  public get getType(): string {
+    return this.type
   }
 
   //SET Methods
