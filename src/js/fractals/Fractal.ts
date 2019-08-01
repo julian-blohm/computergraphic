@@ -1,11 +1,12 @@
 import Scene from '../scene/Scene'
+import MandelbrotSet from './Mandelbrot'
 
 export default abstract class Fractral {
   private scene: Scene
   private name: string
   private color: string
   private level: number
-  private type : string
+  private type: string
 
   public constructor(type: string, scene: Scene, name: string, color = 'white', level = 0) {
     this.scene = scene
@@ -38,8 +39,35 @@ export default abstract class Fractral {
 
   private addMenu(menu: HTMLElement): void {
     const div = document.createElement('div')
-    div.innerHTML =
-      '<label>Level</label>\
+    if (this.getName === 'Mandelbrot') {
+      div.innerHTML =
+        '<label>Zoom Faktor</label>\
+    <br />\
+    <select id="zoomFactor">\
+      <option value="2000">0</option>\
+      <option value="2800">1</option>\
+      <option value="3600">2</option>\
+      <option value="4400">3</option>\
+    </select>\
+    <br />\
+    <label>X Zoom</label>\
+    <br />\
+    <select id="zoomX">\
+      <option value="0.7">0.7</option>\
+      <option value="0.8">0.8</option>\
+    </select>\
+    <br />\
+    <label>Y Zoom</label>\
+    <br />\
+    <select id="zoomY">\
+      <option value="0.6">0.6</option>\
+      <option value="0.7">0.7</option>\
+    </select>\
+    <br />\
+   '
+    } else {
+      div.innerHTML =
+        '<label>Level</label>\
     <br />\
     <select id="level">\
       <option value="0">0</option>\
@@ -58,6 +86,7 @@ export default abstract class Fractral {
     </select>\
     <br />\
    '
+    }
 
     menu.appendChild(div)
   }
