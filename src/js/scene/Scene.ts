@@ -7,6 +7,7 @@ import Mengersponge from '../fractals/Mengersponge'
 import SierpinskiCarpet from '../fractals/SierpinskiCarpet'
 import PixiShape from '../fractals/PixiShape'
 import MandelbrotSet from '../fractals/Mandelbrot'
+import LineFractal from '../fractals/LineFractal'
 
 export default class Scene {
   private pixiScene: _pixi.Application
@@ -76,6 +77,7 @@ export default class Scene {
 
   private addObjectsToList(): void {
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
+    this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'LineFractal', 'red'))
     this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
     this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
     this.objectList.push(new SierpinskiCarpet(-1.5, -1.5, 3, 0, 0, '3d', this, 'Sierpinski', 'white'))
