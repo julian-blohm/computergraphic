@@ -41,7 +41,16 @@ export default abstract class Fractral {
     const div = document.createElement('div')
     if (this.getName === 'Mandelbrot') {
       div.innerHTML =
-        '<label>Zoom Faktor</label>\
+        '<label>Level</label>\
+      <br />\
+      <select id="level">\
+        <option value="0">0</option>\
+        <option value="1">1</option>\
+        <option value="2">2</option>\
+        <option value="3">3</option>\
+      </select>\
+      <br />\
+        <label>Zoom Faktor</label>\
     <br />\
     <select id="zoomFactor">\
       <option value="2000">0</option>\

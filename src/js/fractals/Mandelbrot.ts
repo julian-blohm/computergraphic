@@ -53,8 +53,7 @@ export default class MandelbrotSet extends Fractral {
   private checkIfInSet(x: number, y: number): number {
     var realComponentOfResult = x
     var imaginaryComponentOfResult = y
-    var maxIterations = 100
-    for (var i = 0; i < maxIterations; i++) {
+    for (var i = 0; i < this.getLevel; i++) {
       var tempRealComponent =
         realComponentOfResult * realComponentOfResult - imaginaryComponentOfResult * imaginaryComponentOfResult + x
       var tempImaginaryComponent = 2 * realComponentOfResult * imaginaryComponentOfResult + y
@@ -62,7 +61,7 @@ export default class MandelbrotSet extends Fractral {
       imaginaryComponentOfResult = tempImaginaryComponent
 
       // Return a number as a percentage
-      if (realComponentOfResult * imaginaryComponentOfResult > 5) return (i / maxIterations) * 100
+      if (realComponentOfResult * imaginaryComponentOfResult > 5) return (i / this.getLevel) * 100
     }
     return 0 // Return zero if in set
   }
