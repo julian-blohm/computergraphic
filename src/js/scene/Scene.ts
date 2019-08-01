@@ -5,7 +5,8 @@ import { OrbitControls } from 'three-orbitcontrols-ts'
 import Cube from '../fractals/Cube'
 import Mengersponge from '../fractals/Mengersponge'
 import SierpinskiCarpet from '../fractals/SierpinskiCarpet'
-import PixiShape from '../fractals/PixiShape';
+import PixiShape from '../fractals/PixiShape'
+import MandelbrotSet from '../fractals/Mandelbrot'
 
 export default class Scene {
   private pixiScene: _pixi.Application
@@ -16,17 +17,19 @@ export default class Scene {
   private objectIndex: number
   private objectList: any[]
   private play: boolean
+  private ctx: any
+  private myCanvas: any
 
   public constructor() {
     this.pixiScene = new _pixi.Application({
-      width: 256,         // default: 800
-      height: 256,        // default: 600
-      antialias: true,    // default: false
+      width: 256, // default: 800
+      height: 256, // default: 600
+      antialias: true, // default: false
       transparent: false, // default: false
-      resolution: 1,       // default: 1
+      resolution: 1, // default: 1
     })
     //adding pixijs canvas (its hidden)
-    document.body.appendChild(this.pixiScene.view);
+    document.body.appendChild(this.pixiScene.view)
     document.body.getElementsByTagName('canvas')[0].setAttribute('id', 'pixiCanvas')
     //adding threejs canvas
     this.scene = new _three.Scene()
@@ -37,6 +40,14 @@ export default class Scene {
     this.objectList = []
     this.objectIndex = 0
     this.play = false
+
+    //normales canvas
+    this.myCanvas = document.createElement('canvas')
+    this.myCanvas.setAttribute('id', 'normalCanvas')
+    this.myCanvas.width = 1920
+    this.myCanvas.height = 1080
+    document.body.appendChild(this.myCanvas)
+    this.ctx = this.myCanvas.getContext('2d')
   }
 
   public init(): void {
@@ -65,6 +76,7 @@ export default class Scene {
 
   private addObjectsToList(): void {
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
+    this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
     this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
     this.objectList.push(new SierpinskiCarpet(-1.5, -1.5, 3, 0, 0, '3d', this, 'Sierpinski', 'white'))
     this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 0, '3d', this, 'Mengersponge', 'red'))
@@ -114,6 +126,7 @@ export default class Scene {
   }
 
   private removeObjects(scene: _three.Object3D): void {
+    this.ctx.clearRect(0, 0, this.myCanvas.width, this.myCanvas.height)
     for (let i = scene.children.length - 1; i >= 0; i--) {
       this.removeObjects(scene.children[i])
       scene.remove(scene.children[i])
@@ -143,13 +156,20 @@ export default class Scene {
   }
 
   public changeCanvas(objectIndex: number): void {
-    if(this.objectList[objectIndex].getType === '3d') {
+    if (this.objectList[objectIndex].getType === '3d') {
       document.getElementById('pixiCanvas').style.display = 'none'
+      document.getElementById('normalCanvas').style.display = 'none'
       document.getElementById('threeCanvas').style.display = 'block'
     }
-    if(this.objectList[objectIndex].getType === '2d') {
+    if (this.objectList[objectIndex].getType === '2d') {
       document.getElementById('pixiCanvas').style.display = 'block'
       document.getElementById('threeCanvas').style.display = 'none'
+      document.getElementById('normalCanvas').style.display = 'none'
+    }
+    if (this.objectList[objectIndex].getType === 'normalCanvas') {
+      document.getElementById('normalCanvas').style.display = 'block'
+      document.getElementById('threeCanvas').style.display = 'none'
+      document.getElementById('pixiCanvas').style.display = 'none'
     }
   }
 }
