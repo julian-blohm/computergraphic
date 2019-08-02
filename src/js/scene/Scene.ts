@@ -8,6 +8,7 @@ import SierpinskiCarpet from '../fractals/SierpinskiCarpet'
 import PixiShape from '../fractals/PixiShape'
 import MandelbrotSet from '../fractals/Mandelbrot'
 import LineFractal from '../fractals/LineFractal'
+import MiraFractal from '../fractals/MiraFractal';
 
 export default class Scene {
   private pixiScene: _pixi.Application
@@ -85,6 +86,7 @@ export default class Scene {
     this.objectList.push(new Cube('3d', this, 'Cube 2', 'green'))
     this.objectList.push(new Cube('3d', this, 'Cube 3'))
     this.objectList.push(new Cube('3d', this, 'Cube 4', 'yellow'))
+    this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFCC00', 5, window.innerWidth, window.innerHeight))
   }
 
   public start(): void {
@@ -158,17 +160,25 @@ export default class Scene {
   }
 
   public changeCanvas(objectIndex: number): void {
+    console.log(this.objectList[objectIndex].getType);
+    console.log("*******************");
+    console.log("*******************");
+    console.log("*******************");
+    
     if (this.objectList[objectIndex].getType === '3d') {
+      console.log("3D");
       document.getElementById('pixiCanvas').style.display = 'none'
       document.getElementById('normalCanvas').style.display = 'none'
       document.getElementById('threeCanvas').style.display = 'block'
     }
     if (this.objectList[objectIndex].getType === '2d') {
+      console.log("2D");
       document.getElementById('pixiCanvas').style.display = 'block'
       document.getElementById('threeCanvas').style.display = 'none'
       document.getElementById('normalCanvas').style.display = 'none'
     }
     if (this.objectList[objectIndex].getType === 'normalCanvas') {
+      console.log("normal");
       document.getElementById('normalCanvas').style.display = 'block'
       document.getElementById('threeCanvas').style.display = 'none'
       document.getElementById('pixiCanvas').style.display = 'none'
