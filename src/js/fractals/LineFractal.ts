@@ -18,10 +18,10 @@ export default class LineFractal extends Fractral {
   private hor(x: number, y: number, len: number): void {
     var _this = this
     if (len < 1) return
-
     _this.ctx.beginPath()
     _this.ctx.moveTo(x - len / 2, y)
     _this.ctx.lineTo(x + len / 2, y)
+    _this.ctx.strokeStyle = _this.getColor
     _this.ctx.stroke()
 
     setTimeout(function(): void {
@@ -33,10 +33,10 @@ export default class LineFractal extends Fractral {
   private ver(x: number, y: number, len: number): void {
     var _this = this
     if (len < 1) return
-
     _this.ctx.beginPath()
     _this.ctx.moveTo(x, y - len / 2)
     _this.ctx.lineTo(x, y + len / 2)
+    _this.ctx.strokeStyle = _this.getColor
     _this.ctx.stroke()
 
     setTimeout(function(): void {
