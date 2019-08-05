@@ -77,6 +77,7 @@ export default class Scene {
   }
 
   private addObjectsToList(): void {
+    this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFCC00', 5, window.innerWidth, window.innerHeight))
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
     this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal 1', 'red'))
     this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
@@ -86,7 +87,6 @@ export default class Scene {
     this.objectList.push(new Cube('3d', this, 'Cube 2', 'green'))
     this.objectList.push(new Cube('3d', this, 'Cube 3'))
     this.objectList.push(new Cube('3d', this, 'Cube 4', 'yellow'))
-    this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFCC00', 5, window.innerWidth, window.innerHeight))
   }
 
   public start(): void {

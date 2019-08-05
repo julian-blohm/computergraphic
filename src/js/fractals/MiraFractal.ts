@@ -1,6 +1,7 @@
 import Fractral from './Fractal'
 import * as _pixi from 'pixi.js'
 import Scene from '../scene/Scene'
+import { RGBA_ASTC_10x10_Format } from 'three';
 
 interface Point {
     x: number
@@ -21,6 +22,7 @@ export default class MiraFractal extends Fractral {
     private iteration: number
     private maxIteration: number
     private scale: number
+
         
 
     //For Drawing
@@ -35,6 +37,7 @@ export default class MiraFractal extends Fractral {
     private ratio: number
     
 
+    
 
     public constructor (  
         type: string,  
@@ -61,6 +64,9 @@ export default class MiraFractal extends Fractral {
             this.drawPoint = {x: 0, y: 0}
             this.cl = this.getColor
             this.graphics = new _pixi.Graphics()
+            
+            
+
 
     }
 
@@ -68,7 +74,7 @@ export default class MiraFractal extends Fractral {
     public init(): void {
 
         this.reset()
-        this.graphics.beginFill(parseInt(this.cl.toString().replace(/^#/,''), 16));
+        this.graphics.beginFill(0x0000ff, 1);
         this.graphics.blendMode = _pixi.BLEND_MODES.LIGHTEN;
         this.stage = this.getMainScene.getPixiScene.stage;
         this.stage.addChild(this.graphics);
@@ -82,7 +88,9 @@ export default class MiraFractal extends Fractral {
         this.maxDistanceToCenter = this.lineDistance({x: 0, y: 0}, this.midPoint)
         this.draw = this.draw.bind(this)
         this.draw()
+        this.stage.addChild(this.graphics);
 
+        this.graphics.endFill();
     }
 
     private reset(): void {
@@ -143,7 +151,7 @@ export default class MiraFractal extends Fractral {
 
         this.drawPoint =  this.nextIteration()
         this.ratio = (this.lineDistance(this.drawPoint, this.midPoint) / this.maxDistanceToCenter)
-        this.graphics.drawRect(this.drawPoint.x, this.drawPoint.y, 3, 3)
+        this.graphics.drawRect(this.drawPoint.x, this.drawPoint.y, 10, 10)
         console.log(this.drawPoint);
         console.log(this.ratio);
         console.log("#################################");
