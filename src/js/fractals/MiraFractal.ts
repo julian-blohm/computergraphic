@@ -90,7 +90,7 @@ export default class MiraFractal extends Fractral {
         this.draw()
         this.stage.addChild(this.graphics);
 
-        this.graphics.endFill();
+        //this.graphics.endFill();
     }
 
     private reset(): void {
@@ -111,7 +111,7 @@ export default class MiraFractal extends Fractral {
     public nextIteration(): Point {
         this.iteration++
 
-        var z = this.x
+        let z = this.x
         this.x = this.b * this.y + this.j
 
         this.j = this.a * this.x + this.c * Math.pow(this.x, 2) / (1 + Math.pow(this.x, 2))
