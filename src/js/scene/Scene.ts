@@ -8,6 +8,9 @@ import SierpinskiCarpet from '../fractals/SierpinskiCarpet'
 import PixiShape from '../fractals/PixiShape'
 import MandelbrotSet from '../fractals/Mandelbrot'
 import LineFractal from '../fractals/LineFractal'
+import MiraFractal from '../fractals/MiraFractal'
+import KochSnowflake from '../fractals/KochSnowflake'
+import Torus from '../fractals/Torus'
 import SierpinskiTriangle from '../fractals/SierpinskiTriangle'
 
 export default class Scene {
@@ -77,6 +80,7 @@ export default class Scene {
   }
 
   private addObjectsToList(): void {
+    this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFFFFF', 5, window.innerWidth, window.innerHeight))
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
     this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal 1', 'red'))
     this.objectList.push(new SierpinskiTriangle(this.ctx, 1, 'normalCanvas', this, 'Sierpinski Triangle', 'red'))
@@ -87,6 +91,8 @@ export default class Scene {
     this.objectList.push(new Cube('3d', this, 'Cube 2', 'green'))
     this.objectList.push(new Cube('3d', this, 'Cube 3'))
     this.objectList.push(new Cube('3d', this, 'Cube 4', 'yellow'))
+    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Snowflake', 'red'))
+    this.objectList.push(new Torus('3d', this, 'Torus', 'blue'))
   }
 
   public start(): void {
@@ -160,17 +166,25 @@ export default class Scene {
   }
 
   public changeCanvas(objectIndex: number): void {
+    console.log(this.objectList[objectIndex].getType)
+    console.log('*******************')
+    console.log('*******************')
+    console.log('*******************')
+
     if (this.objectList[objectIndex].getType === '3d') {
+      console.log('3D')
       document.getElementById('pixiCanvas').style.display = 'none'
       document.getElementById('normalCanvas').style.display = 'none'
       document.getElementById('threeCanvas').style.display = 'block'
     }
     if (this.objectList[objectIndex].getType === '2d') {
+      console.log('2D')
       document.getElementById('pixiCanvas').style.display = 'block'
       document.getElementById('threeCanvas').style.display = 'none'
       document.getElementById('normalCanvas').style.display = 'none'
     }
     if (this.objectList[objectIndex].getType === 'normalCanvas') {
+      console.log('normal')
       document.getElementById('normalCanvas').style.display = 'block'
       document.getElementById('threeCanvas').style.display = 'none'
       document.getElementById('pixiCanvas').style.display = 'none'
