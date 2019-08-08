@@ -11,6 +11,7 @@ import LineFractal from '../fractals/LineFractal'
 import MiraFractal from '../fractals/MiraFractal';
 import KochSnowflake from '../fractals/KochSnowflake';
 import Torus from '../fractals/Torus';
+import TorusKnot from '../fractals/TorusKnot';
 
 export default class Scene {
   private pixiScene: _pixi.Application
@@ -92,6 +93,7 @@ export default class Scene {
     this.objectList.push(new Cube('3d', this, 'Cube 4', 'yellow'))
     this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Snowflake','red'))
     this.objectList.push(new Torus('3d', this, 'Torus', 'blue'))
+    this.objectList.push(new TorusKnot('3d', this, 'Torus Knot', 'blue'))
   }
 
   public start(): void {
