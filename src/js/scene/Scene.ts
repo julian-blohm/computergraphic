@@ -9,6 +9,7 @@ import PixiShape from '../fractals/PixiShape'
 import MandelbrotSet from '../fractals/Mandelbrot'
 import LineFractal from '../fractals/LineFractal'
 import SierpinskiTriangle from '../fractals/SierpinskiTriangle'
+import SierpinskiPyramide from '../fractals/SierpinskiPyramide'
 
 export default class Scene {
   private pixiScene: _pixi.Application
@@ -78,6 +79,7 @@ export default class Scene {
 
   private addObjectsToList(): void {
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
+    this.objectList.push(new SierpinskiPyramide(0, 2, 0, 10, 10, 1, '3d', this, 'Sierpinski Pyramide', 'red'))
     this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal 1', 'red'))
     this.objectList.push(new SierpinskiTriangle(this.ctx, 1, 'normalCanvas', this, 'Sierpinski Triangle', 'red'))
     this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
