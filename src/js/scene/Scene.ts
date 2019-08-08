@@ -10,6 +10,7 @@ import MandelbrotSet from '../fractals/Mandelbrot'
 import LineFractal from '../fractals/LineFractal'
 import MiraFractal from '../fractals/MiraFractal';
 import KochSnowflake from '../fractals/KochSnowflake';
+import Torus from '../fractals/Torus';
 
 export default class Scene {
   private pixiScene: _pixi.Application
@@ -78,7 +79,7 @@ export default class Scene {
   }
 
   private addObjectsToList(): void {
-    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Snowflake','red'))
+    
     this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFFFFF', 5, window.innerWidth, window.innerHeight))
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
     this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal 1', 'red'))
@@ -89,6 +90,8 @@ export default class Scene {
     this.objectList.push(new Cube('3d', this, 'Cube 2', 'green'))
     this.objectList.push(new Cube('3d', this, 'Cube 3'))
     this.objectList.push(new Cube('3d', this, 'Cube 4', 'yellow'))
+    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Snowflake','red'))
+    this.objectList.push(new Torus('3d', this, 'Torus', 'blue'))
   }
 
   public start(): void {
