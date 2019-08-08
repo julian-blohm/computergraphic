@@ -29,10 +29,18 @@ export default class SierpinskiPyramide extends Fractal {
     this.height = height
   }
 
-  public init() {
+  public init(): void {
     console.log('INIT')
     const scene = this.getMainScene.getScene
+    const camera = this.getMainScene.getCamera
     this.calcSierpinski(scene, this.x, this.y, this.z, this.base, this.height, this.getLevel)
+    const spotLight = new _three.SpotLight(0xffffff, 0.9)
+    const ambLight = new _three.AmbientLight(0xffffff, 0.3)
+    spotLight.position.set(0, 100, 50)
+    spotLight.castShadow = true
+    scene.add(spotLight)
+    scene.add(ambLight)
+    camera.position.set(-5, 4, 5)
   }
 
   private calcSierpinski(
@@ -55,6 +63,7 @@ export default class SierpinskiPyramide extends Fractal {
 
       const childs = [[0, nh / 2, 0], [-nb, -nh / 2, 0], [0, -nh / 2, nb], [nb, -nh / 2, 0], [0, -nh / 2, -nb]]
 
+      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
       childs.forEach(point => {
         console.log('FOREACH LOOP')
         this.calcSierpinski(scene, x + point[0], y + point[1], z + point[2], nb, nh, it, lvl + 1)
