@@ -13,6 +13,7 @@ import KochSnowflake from '../fractals/KochSnowflake'
 import Torus from '../fractals/Torus'
 import SierpinskiTriangle from '../fractals/SierpinskiTriangle'
 import SierpinskiPyramide from '../fractals/SierpinskiPyramide'
+import PythagorasTree from '../fractals/pythagorasTree'
 
 export default class Scene {
   private pixiScene: _pixi.Application
@@ -85,6 +86,7 @@ export default class Scene {
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
     this.objectList.push(new SierpinskiPyramide(0, 2, 0, 2, 2, 1, '3d', this, 'Sierpinski Pyramide', 'red'))
     this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal 1', 'red'))
+    this.objectList.push(new PythagorasTree(this.ctx, 0, 'normalCanvas', this, 'Pythagoras Tree', 'red'))
     this.objectList.push(new SierpinskiTriangle(this.ctx, 1, 'normalCanvas', this, 'Sierpinski Triangle', 'red'))
     this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
     this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
