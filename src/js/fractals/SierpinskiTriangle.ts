@@ -18,7 +18,6 @@ export default class SierpinskiTriangle extends Fractral {
   }
 
   public init(): void {
-    let myCanvas = document.getElementById('normalCanvas')
     this.calcSierpinskiTriangle()
   }
 

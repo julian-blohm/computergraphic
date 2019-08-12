@@ -13,6 +13,8 @@ import KochSnowflake from '../fractals/KochSnowflake'
 import Torus from '../fractals/Torus'
 import SierpinskiTriangle from '../fractals/SierpinskiTriangle'
 import SierpinskiPyramide from '../fractals/SierpinskiPyramide'
+import PythagorasTree from '../fractals/pythagorasTree'
+import BarnsleyFern from '../fractals/BarnsleyFern'
 
 export default class Scene {
   private pixiScene: _pixi.Application
@@ -81,10 +83,12 @@ export default class Scene {
   }
 
   private addObjectsToList(): void {
-    this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFFFFF', 5, window.innerWidth, window.innerHeight))
+    // this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFFFFF', 5, window.innerWidth, window.innerHeight))
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
     this.objectList.push(new SierpinskiPyramide(0, 2, 0, 2, 2, 1, '3d', this, 'Sierpinski Pyramide', 'red'))
     this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal 1', 'red'))
+    this.objectList.push(new PythagorasTree(this.ctx, 0, 'normalCanvas', this, 'Pythagoras Tree', 'red'))
+    this.objectList.push(new BarnsleyFern(this.ctx, 1000, 'normalCanvas', this, 'Barnsley Fern', 'red'))
     this.objectList.push(new SierpinskiTriangle(this.ctx, 1, 'normalCanvas', this, 'Sierpinski Triangle', 'red'))
     this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
     this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
@@ -135,6 +139,7 @@ export default class Scene {
   }
 
   private removeObjects(scene: _three.Object3D): void {
+    this.myCanvas.width = this.myCanvas.width
     this.ctx.clearRect(0, 0, this.myCanvas.width, this.myCanvas.height)
     for (let i = scene.children.length - 1; i >= 0; i--) {
       this.removeObjects(scene.children[i])
