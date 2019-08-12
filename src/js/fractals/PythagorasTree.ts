@@ -15,8 +15,6 @@ export default class PythagorasTree extends Fractral {
   }
 
   private calcPythagorasTree(x1: number, y1: number, x2: number, y2: number, level: number): void {
-    console.log('LEVEL: ' + level)
-    console.log('GETLEVEL: ' + this.getLevel)
     if (level === this.getLevel) {
       return
     }

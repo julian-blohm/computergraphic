@@ -102,6 +102,34 @@ export default abstract class Fractral {
   </select>\
   <br />\
  '
+    } else if (this.getName === 'Barnsley Fern') {
+      div.innerHTML =
+        '<label>Level</label>\
+  <br />\
+  <select id="level">\
+    <option value="0">0</option>\
+    <option value="1">1</option>\
+    <option value="2">2</option>\
+    <option value="3">3</option>\
+    <option value="4">4</option>\
+    <option value="5">5</option>\
+    <option value="100">100</option>\
+    <option value="500">500</option>\
+    <option value="1000">1000</option>\
+    <option value="5000">5000</option>\
+    <option value="10000">10000</option>\
+  </select>\
+  <br />\
+  <label>Farbe</label>\
+  <br />\
+  <select id="color">\
+    <option value="white">Weiß</option>\
+    <option value="red">Rot</option>\
+    <option value="green">Grün</option>\
+    <option value="yellow">Gelb</option>\
+  </select>\
+  <br />\
+ '
     } else {
       div.innerHTML =
         '<label>Level</label>\
