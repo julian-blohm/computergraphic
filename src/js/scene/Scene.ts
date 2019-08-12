@@ -13,7 +13,7 @@ import KochSnowflake from '../fractals/KochSnowflake'
 import Torus from '../fractals/Torus'
 import SierpinskiTriangle from '../fractals/SierpinskiTriangle'
 import SierpinskiPyramide from '../fractals/SierpinskiPyramide'
-import PythagorasTree from '../fractals/pythagorasTree'
+import PythagorasTree from '../fractals/PythagorasTree'
 import BarnsleyFern from '../fractals/BarnsleyFern'
 
 export default class Scene {
