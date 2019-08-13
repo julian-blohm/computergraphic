@@ -8,16 +8,16 @@ import SierpinskiCarpet from '../fractals/SierpinskiCarpet'
 import PixiShape from '../fractals/PixiShape'
 import MandelbrotSet from '../fractals/Mandelbrot'
 import LineFractal from '../fractals/LineFractal'
-import MiraFractal from '../fractals/MiraFractal'
 import KochSnowflake from '../fractals/KochSnowflake'
 import Torus from '../fractals/Torus'
+import TorusKnot from '../fractals/TorusKnot'
+import MiraFractal from '../fractals/MiraFractal'
 import SierpinskiTriangle from '../fractals/SierpinskiTriangle'
 import SierpinskiPyramide from '../fractals/SierpinskiPyramide'
 import PythagorasTree from '../fractals/PythagorasTree'
 import BarnsleyFern from '../fractals/BarnsleyFern'
 
 export default class Scene {
-  private pixiScene: _pixi.Application
   private scene: _three.Scene
   private camera: _three.PerspectiveCamera
   private renderer: _three.WebGLRenderer
@@ -27,6 +27,7 @@ export default class Scene {
   private play: boolean
   private ctx: any
   private myCanvas: any
+  private pixiScene: any
 
   public constructor() {
     this.pixiScene = new _pixi.Application({
@@ -96,6 +97,7 @@ export default class Scene {
     this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 0, '3d', this, 'Mengersponge', 'red'))
     this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Curve', 'red'))
     this.objectList.push(new Torus('3d', this, 'Torus', 'blue'))
+    this.objectList.push(new TorusKnot('3d', this, 'Torus Knot', 'blue'))
   }
 
   public start(): void {
