@@ -8,13 +8,16 @@ import SierpinskiCarpet from '../fractals/SierpinskiCarpet'
 import PixiShape from '../fractals/PixiShape'
 import MandelbrotSet from '../fractals/Mandelbrot'
 import LineFractal from '../fractals/LineFractal'
-import MiraFractal from '../fractals/MiraFractal';
-import KochSnowflake from '../fractals/KochSnowflake';
-import Torus from '../fractals/Torus';
-import TorusKnot from '../fractals/TorusKnot';
+import KochSnowflake from '../fractals/KochSnowflake'
+import Torus from '../fractals/Torus'
+import TorusKnot from '../fractals/TorusKnot'
+import MiraFractal from '../fractals/MiraFractal'
+import SierpinskiTriangle from '../fractals/SierpinskiTriangle'
+import SierpinskiPyramide from '../fractals/SierpinskiPyramide'
+import PythagorasTree from '../fractals/PythagorasTree'
+import BarnsleyFern from '../fractals/BarnsleyFern'
 
 export default class Scene {
-  private pixiScene: _pixi.Application
   private scene: _three.Scene
   private camera: _three.PerspectiveCamera
   private renderer: _three.WebGLRenderer
@@ -24,6 +27,7 @@ export default class Scene {
   private play: boolean
   private ctx: any
   private myCanvas: any
+  private pixiScene: any
 
   public constructor() {
     this.pixiScene = new _pixi.Application({
@@ -80,18 +84,18 @@ export default class Scene {
   }
 
   private addObjectsToList(): void {
-    
-    this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFFFFF', 5, window.innerWidth, window.innerHeight))
+    // this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFFFFF', 5, window.innerWidth, window.innerHeight))
     this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
+    this.objectList.push(new SierpinskiPyramide(0, 2, 0, 2, 2, 1, '3d', this, 'Sierpinski Pyramide', 'red'))
     this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal 1', 'red'))
+    this.objectList.push(new PythagorasTree(this.ctx, 0, 'normalCanvas', this, 'Pythagoras Tree', 'red'))
+    this.objectList.push(new BarnsleyFern(this.ctx, 1000, 'normalCanvas', this, 'Barnsley Fern', 'red'))
+    this.objectList.push(new SierpinskiTriangle(this.ctx, 1, 'normalCanvas', this, 'Sierpinski Triangle', 'red'))
     this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
     this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
     this.objectList.push(new SierpinskiCarpet(-1.5, -1.5, 3, 0, 0, '3d', this, 'Sierpinski', 'white'))
     this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 0, '3d', this, 'Mengersponge', 'red'))
-    this.objectList.push(new Cube('3d', this, 'Cube 2', 'green'))
-    this.objectList.push(new Cube('3d', this, 'Cube 3'))
-    this.objectList.push(new Cube('3d', this, 'Cube 4', 'yellow'))
-    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Snowflake','red'))
+    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Curve', 'red'))
     this.objectList.push(new Torus('3d', this, 'Torus', 'blue'))
     this.objectList.push(new TorusKnot('3d', this, 'Torus Knot', 'blue'))
   }
@@ -137,6 +141,7 @@ export default class Scene {
   }
 
   private removeObjects(scene: _three.Object3D): void {
+    this.myCanvas.width = this.myCanvas.width
     this.ctx.clearRect(0, 0, this.myCanvas.width, this.myCanvas.height)
     for (let i = scene.children.length - 1; i >= 0; i--) {
       this.removeObjects(scene.children[i])
@@ -167,25 +172,25 @@ export default class Scene {
   }
 
   public changeCanvas(objectIndex: number): void {
-    console.log(this.objectList[objectIndex].getType);
-    console.log("*******************");
-    console.log("*******************");
-    console.log("*******************");
-    
+    console.log(this.objectList[objectIndex].getType)
+    console.log('*******************')
+    console.log('*******************')
+    console.log('*******************')
+
     if (this.objectList[objectIndex].getType === '3d') {
-      console.log("3D");
+      console.log('3D')
       document.getElementById('pixiCanvas').style.display = 'none'
       document.getElementById('normalCanvas').style.display = 'none'
       document.getElementById('threeCanvas').style.display = 'block'
     }
     if (this.objectList[objectIndex].getType === '2d') {
-      console.log("2D");
+      console.log('2D')
       document.getElementById('pixiCanvas').style.display = 'block'
       document.getElementById('threeCanvas').style.display = 'none'
       document.getElementById('normalCanvas').style.display = 'none'
     }
     if (this.objectList[objectIndex].getType === 'normalCanvas') {
-      console.log("normal");
+      console.log('normal')
       document.getElementById('normalCanvas').style.display = 'block'
       document.getElementById('threeCanvas').style.display = 'none'
       document.getElementById('pixiCanvas').style.display = 'none'
