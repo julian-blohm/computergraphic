@@ -94,7 +94,7 @@ export default class Scene {
     this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
     this.objectList.push(new SierpinskiCarpet(-1.5, -1.5, 3, 0, 0, '3d', this, 'Sierpinski', 'white'))
     this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 0, '3d', this, 'Mengersponge', 'red'))
-    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Snowflake', 'red'))
+    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Curve', 'red'))
     this.objectList.push(new Torus('3d', this, 'Torus', 'blue'))
   }
 

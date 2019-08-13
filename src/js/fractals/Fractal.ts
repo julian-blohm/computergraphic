@@ -130,6 +130,30 @@ export default abstract class Fractral {
   </select>\
   <br />\
  '
+    } else if (this.getName === 'Koch Curve') {
+      div.innerHTML =
+        '<label>Level</label>\
+  <br />\
+  <select id="level">\
+    <option value="0">0</option>\
+    <option value="1">1</option>\
+    <option value="2">2</option>\
+    <option value="3">3</option>\
+    <option value="4">4</option>\
+    <option value="5">5</option>\
+    <option value="6">6</option>\
+  </select>\
+  <br />\
+  <label>Farbe</label>\
+  <br />\
+  <select id="color">\
+    <option value="white">Weiß</option>\
+    <option value="red">Rot</option>\
+    <option value="green">Grün</option>\
+    <option value="yellow">Gelb</option>\
+  </select>\
+  <br />\
+ '
     } else {
       div.innerHTML =
         '<label>Level</label>\
