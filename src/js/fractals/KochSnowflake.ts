@@ -1,127 +1,75 @@
 import Fractral from './Fractal'
 import Scene from '../scene/Scene'
 
-  interface vector2D {x: number, y: number}
-
 export default class KochSnowflake extends Fractral {
-
-  private vectorA: vector2D
-  private vectorB: vector2D
-  private vectorC: vector2D
-
   private ctx: any
-  
+
   public constructor(ctx: any, level: number, type: string, scene: Scene, name: string, color: string) {
     super(type, scene, name, color, level)
     this.ctx = ctx
-
-    this.vectorA = {
-      x: 50,
-      y: 150
-    }
-   
-    this.vectorB = {
-      x: 270,
-      y: 490
-    }
-  
-    this.vectorC = {
-      x: 500,
-      y: 150
-    }
-
   }
 
-  public init() {
-
-
-
-    this.snowFlake(this.vectorA, this.vectorC, 5)
-    this.snowFlake(this.vectorB, this.vectorA, 5)
-    this.snowFlake(this.vectorC, this.vectorB, 5)
+  public init(): void {
+    this.ctx.beginPath()
+    this.ctx.stroke()
+    this.ctx.closePath()
+    this.calcKochCurve([50, 150], [500, 150], this.getLevel)
+    this.calcKochCurve([270, 490], [50, 150], this.getLevel)
+    this.calcKochCurve([500, 150], [270, 490], this.getLevel)
   }
 
-  private snowFlake(a: vector2D, b: vector2D, depth: number) {
-    var _this = this
-    
-    let c = _this.divide(_this.add(_this.multiply(a, 2), b), 3)
-    let d = _this.divide(_this.add(_this.multiply(b, 2), a), 3)
-    let f = _this.divide(_this.add(a, b), 2)
-
-    let v1 = _this.divide(_this.minus(f, a), _this.length(f, a))
-    let v2: vector2D
-    v2 = {
-      x: -v1.x,
-      y: v1.y
+  private calcKochCurve(A: number[], B: number[], level: number): void {
+    if (level < 0) {
+      return null
     }
 
-    var e = _this.add(_this.multiply(v2, Math.sqrt(3)/6 * _this.length(b, a)), f)
+    let C = this.divide(this.add(this.multiply(A, 2), B), 3)
+    let D = this.divide(this.add(this.multiply(B, 2), A), 3)
+    let F = this.divide(this.add(A, B), 2)
 
-    _this.drawLine(a, b)
+    let V1 = this.divide(this.minus(F, A), this.length(F, A))
+    let V2 = [V1[1], -V1[0]]
 
-    if (depth !=0){
+    let E = this.add(this.multiply(V2, (Math.sqrt(3) / 6) * this.length(B, A)), F)
 
-      for (var i=0;i<10;i++) {
-        _this.drawLine(c, d)
-      }
-    }  
+    this.line(A, B, this.getColor)
 
-    this.snowFlake(a, c, depth-1)
-    this.snowFlake(c, e, depth-1)
-    this.snowFlake(e, d, depth-1)
-    this.snowFlake(d, b, depth-1)
-
-  }
-
-  private multiply(v: vector2D, num: number): vector2D {
-    v.x = v.x*num
-    v.y = v.y*num
-
-    return v
-  }
-
-  private divide(v: vector2D, num: number): vector2D {
-    v.x = v.x/num
-    v.y = v.y/num
-
-    return v
-  }
-
-  private add(a: vector2D, b: vector2D): vector2D {
-    let c: vector2D
-    c = {
-      x: a.x + b.x,
-      y: a.y + b.y
+    if (level != 0) {
+      for (var i = 0; i < 10; i++) this.line(C, D, 'black')
     }
 
-    return c
+    this.calcKochCurve(A, C, level - 1)
+    this.calcKochCurve(C, E, level - 1)
+    this.calcKochCurve(E, D, level - 1)
+    this.calcKochCurve(D, B, level - 1)
   }
 
-  private minus(a: vector2D, b: vector2D): vector2D {
-    let c: vector2D
-    c = {
-      x: a.x - b.x,
-      y: a.y - b.y
-    }
-
-    return c
+  private multiply(v: number[], num: number): number[] {
+    return [v[0] * num, v[1] * num]
   }
 
-  private length(a: vector2D, b: vector2D) {
-    return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2))
+  private divide(v: number[], num: number): number[] {
+    return [v[0] / num, v[1] / num]
   }
 
-
-  private drawLine(a: vector2D, b: vector2D) {
-    var _this = this
-
-    _this.ctx.beginPath()
-    _this.ctx.strokeStyle = "#000000" //
-    _this.ctx.moveTo(a.x, a.y)
-    _this.ctx.lineTo(b.x, b.y)
-    _this.ctx.stroke()
-    _this.ctx.closePath()
-
+  private add(a: number[], b: number[]): number[] {
+    return [a[0] + b[0], a[1] + b[1]]
   }
-  
+
+  private minus(a: number[], b: number[]): number[] {
+    return [a[0] - b[0], a[1] - b[1]]
+  }
+
+  private length(a: number[], b: number[]): number {
+    return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2))
+  }
+
+  private line(a: number[], b: number[], c: string): void {
+    this.ctx.beginPath()
+    this.ctx.strokeStyle = c
+    this.ctx.moveTo(a[0], a[1])
+    this.ctx.lineTo(b[0], b[1])
+    this.ctx.stroke()
+    this.ctx.closePath()
+  }
 }
