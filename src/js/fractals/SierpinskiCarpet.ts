@@ -65,7 +65,7 @@ export default class SierpinskiCarpet extends Fractal {
   }
 
   private calcrect(x: number, y: number, width: number, color: string): _three.Mesh {
-    const material = new _three.MeshBasicMaterial({ color: color, side: _three.DoubleSide })
+    const material = new _three.MeshBasicMaterial({ color: color, side: _three.DoubleSide  })
     const rect = new _three.PlaneGeometry(width, width)
     const plane = new _three.Mesh(rect, material)
     plane.position.set(x, y, 0)

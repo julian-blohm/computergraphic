@@ -91,10 +91,9 @@ export default abstract class Fractral {
    '
     } else if (this.getName === 'Pythagoras Tree') {
       div.innerHTML =
-        '<label>Level</label>\
+        '<label>Iteration</label>\
   <br />\
   <select id="level">\
-    <option value="0">0</option>\
     <option value="1">1</option>\
     <option value="2">2</option>\
     <option value="3">3</option>\
@@ -110,16 +109,13 @@ export default abstract class Fractral {
   <label>Farbe</label>\
   <br />\
   <select id="color">\
-    <option value="white">Weiß</option>\
     <option value="red">Rot</option>\
-    <option value="green">Grün</option>\
-    <option value="yellow">Gelb</option>\
   </select>\
   <br />\
  '
     } else if (this.getName === 'Barnsley Fern') {
       div.innerHTML =
-        '<label>Level</label>\
+        '<label>Iteration</label>\
   <br />\
   <select id="level">\
     <option value="0">0</option>\
@@ -147,7 +143,7 @@ export default abstract class Fractral {
  '
     } else if (this.getName === 'Koch Curve') {
       div.innerHTML =
-        '<label>Level</label>\
+        '<label>Iteration</label>\
   <br />\
   <select id="level">\
     <option value="0">0</option>\
@@ -209,27 +205,61 @@ export default abstract class Fractral {
   </select>\
   <br />\
  '
+    } else if (this.getName === 'Cube' || this.getName === 'Torus' || this.getName === 'Torus Knot') {
+  div.innerHTML =
+    '<label>Polygon Level</label>\
+<br />\
+<select id="level">\
+  <option value="0">0</option>\
+  <option value="1">1</option>\
+  <option value="2">2</option>\
+  <option value="3">3</option>\
+  <option value="4">4</option>\
+</select>\
+<br />\
+<label>Farbe</label>\
+<br />\
+<select id="color">\
+  <option value="white">Weiß</option>\
+  <option value="red">Rot</option>\
+  <option value="green">Grün</option>\
+  <option value="yellow">Gelb</option>\
+</select>\
+<br />\
+'
+    } else if (this.getName === 'Graftal') {
+  div.innerHTML =
+      '<label>Farbe</label>\
+  <br />\
+  <select id="color">\
+    <option value="white">Weiß</option>\
+    <option value="red">Rot</option>\
+    <option value="green">Grün</option>\
+    <option value="yellow">Gelb</option>\
+  </select>\
+  <br />\
+  ' 
     } else {
-      div.innerHTML =
-        '<label>Level</label>\
-    <br />\
-    <select id="level">\
-      <option value="0">0</option>\
-      <option value="1">1</option>\
-      <option value="2">2</option>\
-      <option value="3">3</option>\
-    </select>\
-    <br />\
-    <label>Farbe</label>\
-    <br />\
-    <select id="color">\
-      <option value="white">Weiß</option>\
-      <option value="red">Rot</option>\
-      <option value="green">Grün</option>\
-      <option value="yellow">Gelb</option>\
-    </select>\
-    <br />\
-   '
+  div.innerHTML =
+      '<label>Iteration</label>\
+<br />\
+  <select id="level">\
+    <option value="0">0</option>\
+    <option value="1">1</option>\
+    <option value="2">2</option>\
+    <option value="3">3</option>\
+  </select>\
+  <br />\
+  <label>Farbe</label>\
+  <br />\
+  <select id="color">\
+    <option value="white">Weiß</option>\
+    <option value="red">Rot</option>\
+    <option value="green">Grün</option>\
+    <option value="yellow">Gelb</option>\
+  </select>\
+  <br />\
+  '
     }
 
     menu.appendChild(div)

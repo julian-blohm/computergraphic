@@ -86,20 +86,20 @@ export default class Scene {
 
   private addObjectsToList(): void {
     // this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFFFFF', 5, window.innerWidth, window.innerHeight))
-    this.objectList.push(new Cube('3d', this, 'Cube 1', 'red'))
-    this.objectList.push(new SierpinskiPyramide(0, 2, 0, 2, 2, 1, '3d', this, 'Sierpinski Pyramide', 'red'))
-    this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal 1', 'red'))
+    this.objectList.push(new Cube('3d', this, 'Cube', 'white'))
+    this.objectList.push(new Torus('3d', this, 'Torus', 'white'))
+    this.objectList.push(new TorusKnot('3d', this, 'Torus Knot', 'white'))
+    this.objectList.push(new SierpinskiTriangle(this.ctx, 1, 'normalCanvas', this, 'Sierpinski Triangle', 'white'))
+    this.objectList.push(new SierpinskiPyramide(0, 2, 0, 2, 2, 1, '3d', this, 'Sierpinski Pyramide', 'white'))
+    this.objectList.push(new SierpinskiCarpet(0, 0, 3, 0, 0, '3d', this, 'Sierpinski Carpet', 'white'))
+    this.objectList.push(new Mengersponge(0, 0, 0, 3, 0, 0, '3d', this, 'Mengersponge', 'white'))
+    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Curve', 'white'))
     this.objectList.push(new PythagorasTree(this.ctx, 0, 'normalCanvas', this, 'Pythagoras Tree', 'red'))
-    this.objectList.push(new BarnsleyFern(this.ctx, 1000, 'normalCanvas', this, 'Barnsley Fern', 'red'))
-    this.objectList.push(new SierpinskiTriangle(this.ctx, 1, 'normalCanvas', this, 'Sierpinski Triangle', 'red'))
-    this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
-    this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
-    this.objectList.push(new SierpinskiCarpet(-1.5, -1.5, 3, 0, 0, '3d', this, 'Sierpinski', 'white'))
-    this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 0, '3d', this, 'Mengersponge', 'red'))
+    this.objectList.push(new BarnsleyFern(this.ctx, 1000, 'normalCanvas', this, 'Barnsley Fern', 'white'))
+    // this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
     this.objectList.push(new DiamindSquare('3d', this, 'Diamond Square', 'white'))
-    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Curve', 'red'))
-    this.objectList.push(new Torus('3d', this, 'Torus', 'blue'))
-    this.objectList.push(new TorusKnot('3d', this, 'Torus Knot', 'blue'))
+    this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
+    this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal', 'white'))
   }
 
   public start(): void {
