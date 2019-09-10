@@ -56,38 +56,38 @@ export default abstract class Fractral {
     const div = document.createElement('div')
     if (this.getName === 'Mandelbrot') {
       div.innerHTML =
-        '<label>Level</label>\
-      <br />\
-      <select id="level">\
+        '<label class="hide">Level</label>\
+      <br class="hide"/>\
+      <select class="hide" id="level">\
         <option value="0">0</option>\
         <option value="1">1</option>\
         <option value="2">2</option>\
         <option value="3">3</option>\
       </select>\
-      <br />\
-        <label>Zoom Faktor</label>\
-    <br />\
-    <select id="zoomFactor">\
+      <br class="hide"/>\
+        <label class="hide">Zoom Faktor</label>\
+    <br class="hide"/>\
+    <select class="hide" id="zoomFactor">\
       <option value="2000">0</option>\
       <option value="2800">1</option>\
       <option value="3600">2</option>\
       <option value="4400">3</option>\
     </select>\
-    <br />\
-    <label>X Zoom</label>\
-    <br />\
-    <select id="zoomX">\
+    <br class="hide"/>\
+    <label class="hide">X Zoom</label>\
+    <br class="hide"/>\
+    <select class="hide" id="zoomX">\
       <option value="0.7">0.7</option>\
       <option value="0.8">0.8</option>\
     </select>\
-    <br />\
-    <label>Y Zoom</label>\
-    <br />\
-    <select id="zoomY">\
+    <br class="hide"/>\
+    <label class="hide">Y Zoom</label>\
+    <br class="hide"/>\
+    <select class="hide" id="zoomY">\
       <option value="0.6">0.6</option>\
       <option value="0.7">0.7</option>\
     </select>\
-    <br />\
+    <br class="hide"/>\
    '
     } else if (this.getName === 'Pythagoras Tree') {
       div.innerHTML =
@@ -106,9 +106,9 @@ export default abstract class Fractral {
     <option value="10">10</option>\
   </select>\
   <br />\
-  <label>Farbe</label>\
+  <label class="hide">Farbe</label>\
   <br />\
-  <select id="color">\
+  <select class="hide" id="color">\
     <option value="red">Rot</option>\
   </select>\
   <br />\
@@ -206,8 +206,8 @@ export default abstract class Fractral {
   <br />\
  '
     } else if (this.getName === 'Cube' || this.getName === 'Torus' || this.getName === 'Torus Knot') {
-  div.innerHTML =
-    '<label>Polygon Level</label>\
+      div.innerHTML =
+        '<label>Polygon Level</label>\
 <br />\
 <select id="level">\
   <option value="0">0</option>\
@@ -228,8 +228,8 @@ export default abstract class Fractral {
 <br />\
 '
     } else if (this.getName === 'Graftal') {
-  div.innerHTML =
-      '<label>Farbe</label>\
+      div.innerHTML =
+        '<label>Farbe</label>\
   <br />\
   <select id="color">\
     <option value="white">Weiß</option>\
@@ -238,10 +238,10 @@ export default abstract class Fractral {
     <option value="yellow">Gelb</option>\
   </select>\
   <br />\
-  ' 
+  '
     } else {
-  div.innerHTML =
-      '<label>Iteration</label>\
+      div.innerHTML =
+        '<label>Iteration</label>\
 <br />\
   <select id="level">\
     <option value="0">0</option>\
