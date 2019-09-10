@@ -7,6 +7,8 @@ export default abstract class Fractral {
   private color: string
   private level: number
   private type: string
+  private segments: number
+  private smooth: number
 
   public constructor(type: string, scene: Scene, name: string, color = 'white', level = 0) {
     this.scene = scene
@@ -19,8 +21,21 @@ export default abstract class Fractral {
   public init() {}
 
   public update(): void {
+    if (this.getName === 'Diamond Square') {
+      const color = (document.getElementById('color') as HTMLTextAreaElement).value
+      const segments = (document.getElementById('level') as HTMLTextAreaElement).value
+      const smooth = (document.getElementById('smooth') as HTMLTextAreaElement).value
+      this.color = color
+      this.segments = parseInt(segments)
+      this.smooth = parseInt(smooth)
+      // console.log('SSSSSSSSSSSSSS')
+      // console.log(this.color)
+      // console.log(this.segments)
+      // console.log(this.smooth)
+    }
     const level = (document.getElementById('level') as HTMLTextAreaElement).value
     const color = (document.getElementById('color') as HTMLTextAreaElement).value
+
     this.color = color
     this.level = parseInt(level, 10)
   }
@@ -154,6 +169,46 @@ export default abstract class Fractral {
   </select>\
   <br />\
  '
+    } else if (this.getName === 'Diamond Square') {
+      div.innerHTML =
+        '<label>Segmente</label>\
+  <br />\
+  <select id="level">\
+    <option value="4">4</option>\
+    <option value="8">8</option>\
+    <option value="16">16</option>\
+    <option value="32">32</option>\
+    <option value="64">64</option>\
+    <option value="128">128</option>\
+    <option value="256">256</option>\
+    <option value="512">512</option>\
+  </select>\
+  <br />\
+  <label>Smoothing</label>\
+  <br />\
+  <select id="smooth">\
+    <option value="1">1</option>\
+    <option value="9">9</option>\
+    <option value="17">17</option>\
+    <option value="33">33</option>\
+    <option value="66">66</option>\
+    <option value="130">130</option>\
+    <option value="263">263</option>\
+    <option value="513">513</option>\
+    <option value="1026">1026</option>\
+    <option value="2000">2000</option>\
+  </select>\
+  <br />\
+  <label>Farbe</label>\
+  <br />\
+  <select id="color">\
+    <option value="white">Weiß</option>\
+    <option value="red">Rot</option>\
+    <option value="green">Grün</option>\
+    <option value="yellow">Gelb</option>\
+  </select>\
+  <br />\
+ '
     } else {
       div.innerHTML =
         '<label>Level</label>\
@@ -195,6 +250,14 @@ export default abstract class Fractral {
 
   public get getLevel(): number {
     return this.level
+  }
+
+  public get getSegments(): number {
+    return this.segments
+  }
+
+  public get getSmooth(): number {
+    return this.smooth
   }
 
   public get getType(): string {

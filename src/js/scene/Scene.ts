@@ -16,6 +16,7 @@ import SierpinskiTriangle from '../fractals/SierpinskiTriangle'
 import SierpinskiPyramide from '../fractals/SierpinskiPyramide'
 import PythagorasTree from '../fractals/PythagorasTree'
 import BarnsleyFern from '../fractals/BarnsleyFern'
+import DiamindSquare from '../fractals/DiamondSquare'
 
 export default class Scene {
   private scene: _three.Scene
@@ -95,6 +96,7 @@ export default class Scene {
     this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
     this.objectList.push(new SierpinskiCarpet(-1.5, -1.5, 3, 0, 0, '3d', this, 'Sierpinski', 'white'))
     this.objectList.push(new Mengersponge(-1.5, -1.5, -1.5, 3, 0, 0, '3d', this, 'Mengersponge', 'red'))
+    this.objectList.push(new DiamindSquare('3d', this, 'Diamond Square', 'white'))
     this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Curve', 'red'))
     this.objectList.push(new Torus('3d', this, 'Torus', 'blue'))
     this.objectList.push(new TorusKnot('3d', this, 'Torus Knot', 'blue'))
