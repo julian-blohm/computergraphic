@@ -205,11 +205,11 @@ export default abstract class Fractral {
   </select>\
   <br />\
  '
-    } else if (this.getName === 'Cube'){
+    } else if (this.getName === 'Cube') {
       div.innerHTML =
-      '<label class="hide">Polygon Level</label>\
+        '<label>Polygon Level</label>\
       <br />\
-      <select id="level" class="hide">\
+      <select id="level">\
         <option value="0">0</option>\
         <option value="1">1</option>\
         <option value="2">2</option>\
@@ -227,7 +227,6 @@ export default abstract class Fractral {
       </select>\
       <br />\
       '
-
     } else if (this.getName === 'Torus' || this.getName === 'Torus Knot') {
       div.innerHTML =
         '<label>Polygon Level</label>\
