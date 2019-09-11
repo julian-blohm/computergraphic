@@ -251,9 +251,9 @@ export default abstract class Fractral {
 '
     } else if (this.getName === 'Graftal') {
       div.innerHTML =
-        '<label>Farbe</label>\
+        '<label class="hide">Farbe</label>\
   <br />\
-  <select id="color">\
+  <select id="color" class="hide">\
     <option value="white">Weiß</option>\
     <option value="red">Rot</option>\
     <option value="green">Grün</option>\
@@ -261,7 +261,7 @@ export default abstract class Fractral {
   </select>\
   <br />\
   '
-    }else if (this.getName === 'Sierpinski Carpet') {
+    }else if (this.getName === 'Sierpinski Carpet' || this.getName === 'Mengersponge') {
       div.innerHTML =
       '<label>Iteration</label>\
       <br />\
