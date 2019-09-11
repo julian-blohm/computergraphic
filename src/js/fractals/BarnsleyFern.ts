@@ -9,8 +9,8 @@ export default class BarnsleyFern extends Fractral {
   private w: number = this.canvas.width
   private h: number = this.canvas.height
 
-  public constructor(ctx: any, level: number, type: string, scene: Scene, name: string, color: string) {
-    super(type, scene, name, color, level)
+  public constructor(ctx: any, level: number, info: string, type: string, scene: Scene, name: string, color: string) {
+    super(info, type, scene, name, color, level)
     this.ctx = ctx
   }
 

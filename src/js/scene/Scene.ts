@@ -85,21 +85,50 @@ export default class Scene {
   }
 
   private addObjectsToList(): void {
+    let cube =
+      'Es handelt sich bei diesem Objekt um einen Kubus oder auch Würfel. An diesem einfachen Objekt lässt sich zeigen, wie sich ein Objekt aus mehreren Polygonen zusammensetzt. Mit der Option „Polygon Level“ lässt sich die Anzahl der Polygone einstellen, welche genutzt werden um den Würfel dar zu stellen.'
+    let torus =
+      'Ein Torus ist ein mathematisches Objekt aus der Geometrie. Er eist eine „wulstartige“ geformte Fläche mit einem „Loch“, hat also die Gestalt eines Rettungsrings, Reifens oder Donuts. Man erhält einen Torus, indem man einen Kreis um eine Achse rotieren lässt, die in der Kreisebene liegt und den Kreis nicht schneidet. An diesem Objekt lässt sich mittels der Option „Polygon Level“ veranschaulichen, wie sich das Objekt verändert, wenn mehr oder weniger Polygone benutzt werden um das Objekt darzustellen.'
+    let torusKnot =
+      'Ein Torusknoten entsteht, indem man eine Schnur nimmt und sie um den Torusknoten windet, solange, bis man am Ausgangspunkt angekommen ist. Je nachdem, wie oft die Schnur um den Torus gewickelt wird, kann ein Torusknoten ganz unterschiedlich aussehen. In dem Projekt handelt es sich um einen der einfachsten Torusknoten, die Kleeblattschlinge oder den Kleeblattknoten. Dieses Objekt hat die gleichen Optionen wie der Torus.'
+    let SirTri =
+      'Das Sierpinski-Dreieck ist ein im Jahre 1915 von Waclaw Sierpinski beschriebenes Fraktal, welches eine selbstähnliche Teilmenge eines (meist gleichseitig dargestellten) Dreiecks ist. Teilt man das Dreieck in vier zueinander kongruente und zum Ausgangsdreieck ähnliche Dreiecke, deren Eckpunkte die Seitenmittelpunkte des Ausgangsdreiecks sind, dann sind die Teilmengen des Fraktals in den drei äußeren Dreiecken skalierte Kopien des gesamten Fraktals, während das mittlere Teildreieck nicht zum Fraktale gehört. Diese Aufteilung des Fraktals in skalpierte Kopien kann in den äußeren Teildreiecken rekursiv fortgesetzt werden. Als Optionen kann man zunächst die „Iteration“ auswählen. Hierbei Lässt sich auswählen, welcher Iterationsschritt des Fraktals gezeigt werden soll.'
+    let sirPyr =
+      'Die Sierpinski Pyramide lässt sich als eine dreidimensionale Variante des Sierpinski Dreiecks beschreiben. Hier wird als Ausgangsform eine Pyramide genutzt. Diese wird von den Seiten mit einer auf dem Kopf stehenden Pyramide „durchschossen“. Dadurch entstehen nun 5 Pyramiden als Teilmengen der Gesamtpyramide.'
+    let sirCar =
+      'Der Sierpinski Teppich ist ein Fraktal, das auf den Mathematiker Waclaw Sierpinski zurückgeht und das dieser in einer ersten Beschreibung im Jahre 1916 vorgestellt hat. Es ist verwandt mit dem Sierpinski Dreieck und dem Menger-Schwamm. Hierbei wird aus einem Quadrat in der Mitte ein Neuntel der Fläche entfernt. Aus den um das Loch verbliebenen acht quadratischen Feldern wird wiederum je ein Neuntel der Fläche entfernt. Dieser Schritt kann wiederum beliebig oft durchgeführt werden. Die Optionen sind wieder die gleichen, wie bei dem Sierpinski Dreieck um der Sierpinski Pyramide. Allerdings wurden hier die Iterationen um einen Schritt verringert, da ansonsten der Rechenaufwand zu hoch ist und keine gute Performance mehr zu gewährleisten ist.'
+    let menSp =
+      'Der Menger-Schwamm gehört wie das Sierpinski-Dreieck, -Pyramide oder -Teppich zu den Objekten der Fraktale. Der Schwamm wurde nach Karl Menger benannt und wurde zum ersten Mal 1926 veröffentlicht. Der Mengerschwamm ist eine dreidimensionale Analogie des Sierpinski Teppichs. Überträgt man das Konstruktionsprinzip des Sierpinski-Teppichs auf einen Würfen, erhält man ein Gebilde, welches einem Schwamm ähnelt. Ausgangslage ist hierbei jedoch ein Würfel. Man unterteilt jede Oberfläche des Würfels in neun Quadrate, diese unterteilen den Würfel in 27 kleinere Würfel. Jeder Würfel in der Mitte jeder Oberfläche und der Würfel im Inneren des großen Würfels wird entfernt. Es verbleibt ein durchlöcherter Würfel, der aus 20 Würfeln mit jeweils 1/27 des Volumes des Ausgangswürfels besteht'
+    let kochSnow =
+      'Die Koch-Kurve ist eines der am häufigsten zitierten Beispiele für ein Fraktal und wurde bei der Entdeckung als Monsterkurve bezeichnet. Die Koch-Kurve ist auch in der Form der Kochnischen Schneeflocke bekannt, die durch geeignete Kombination dreier Koch-Kurven entsteht. Bei dem Objekt in dem Projekt handelt es sich um so eine Schneeflocke. Die Kochsche Schneeflocke nimmt als Ausgangselement ein gleichseitiges Dreieck. An jeder Seite des Dreiecks wird nun das mittlere Drittel entfernt und darüber ein gleichseitiges Dreieck mit der Kantenlänge des entfernten, mittleren Drittels. Nach einigen Iterationen entsteht dann eine Art Schneeflocke. Die verfügbaren Optionen sind wieder die gleichen, wie bei den anderen Fraktalen.'
+    let pyt =
+      'Ein Pythagoras-Baum ist eine besondere Art eines Fraktals. Das ursprüngliche Verfahren zum Erstellen eines Pythagoras-Baums basiert auf dem Satz des Pythagoras, in dem auf ein Quadrat zwei weitere, kleinere Quadrate im rechten Winkel angeordnet werden. Durch rekursives Aufrufen dieser Konstruktionsvorschrift wird ein Fraktal erzeugt, das im Grenzfall der Form eines Baumes ähnelt. Durch den rechten Winkel des eingeschlossenen Dreiecks bleibt die Gesamtfläche jeder Ebene gleich, daher ist die Fläche des Grundelementes (Stammes) genau so groß wie die Summe der Fläche aller äußeren Elemente (Blätter). Als Option kann man hier wieder den Iterationsschritt auswählen.'
+    let barnsley =
+      'Der Barnsley Fern ist ein Fractal, welches nach dem Mathematiker Michael Barnsley benannt wurde.  Die Konstruktion beruht auf der Beobachtung, dass die Blätter eines Farnes selbst wie ein kleiner Farn aussehen. Dies ist eine recht typische Eigenschaft von Pflanzen: Teile der gesamten Pflanze sehen aus wie die gesamte Pflanze selbst. (Der Ast eines Baumes z.B. sieht selbst aus wie ein kleiner Baum). Erzeugt wird der Farn hierbei durch das von Barnsley eingeführte Verfahren des Iterativen Funktionen-Systems (iterated function system), kurz IFS. Das Verfahren erzeugte großes Aufsehen, da zuvor noch nie komplexe pflanzliche Muster so einfach in 4 oder mehr affinen Transformationen dargestellt werden konnten. Affinitätstransformationen verwenden in verschiedenen Richtungen verschiedene Verkleinerungsfaktoren; z.B. ist ein Quadrat einem Rechteck nicht ähnlich, da die Proportionen nicht übereinstimmen, aber affin, da eine einseitige Streckung um einen unterschiedlichen Faktor ein affines Rechteck erzeugt.  Obwohl das IFS keine Technik bietet, welche Entwicklung wie ein L-System berücksichtigt, lassen sich ziemlich schnell und einfach natürliche Strukturen erzeugen.  Beim Barnsley Fern gibt es 4 Transformationen. Per Zufalls wird für jeden Punkt der gezeichnet werden soll, eine dieser Transformationen angewendet. Bei genug Anwendungen entsteht dann der sogenannte Barnsley Fern. Als Optionen stehen dem Nutzer die Anzahl an Iterationen (also wieviele Punkte gezeichnet werden) und die Farbe des Farns zur Verfügung.'
+    let diamond =
+      'Der Barnsley Fern ist ein Fractal, welches nach dem Mathematiker Michael Barnsley benannt wurde. Die Konstruktion beruht auf der Beobachtung, dass die Blätter eines Farnes selbst wie ein kleiner Farn aussehen. Dies ist eine recht typische Eigenschaft von Pflanzen: Teile der gesamten Pflanze sehen aus wie die gesamte Pflanze selbst. (Der Ast eines Baumes z.B. sieht selbst aus wie ein kleiner Baum). Erzeugt wird der Farn hierbei durch das von Barnsley eingeführte Verfahren des Iterativen Funktionen-Systems (iterated function system), kurz IFS. Das Verfahren erzeugte großes Aufsehen, da zuvor noch nie komplexe pflanzliche Muster so einfach in 4 oder mehr affinen Transformationen dargestellt werden konnten. Affinitätstransformationen verwenden in verschiedenen Richtungen verschiedene Verkleinerungsfaktoren; z.B. ist ein Quadrat einem Rechteck nicht ähnlich, da die Proportionen nicht übereinstimmen, aber affin, da eine einseitige Streckung um einen unterschiedlichen Faktor ein affines Rechteck erzeugt.  Obwohl das IFS keine Technik bietet, welche Entwicklung wie ein L-System berücksichtigt, lassen sich ziemlich schnell und einfach natürliche Strukturen erzeugen. Beim Barnsley Fern gibt es 4 Transformationen. Per Zufalls wird für jeden Punkt der gezeichnet werden soll, eine dieser Transformationen angewendet. Bei genug Anwendungen entsteht dann der sogenannte Barnsley Fern. Als Optionen stehen dem Nutzer die Anzahl an Iterationen (also wieviele Punkte gezeichnet werden) und die Farbe des Farns zur Verfügung.'
+    let mandel =
+      'Die Mandelbrot-Menge ist die Menge der komplexen Zahlen. Geometrisch als Teil der Gaußschen Zahlenebene interpretiert, ist die Mandelbrot-Menge ein Fraktal. Bilder davon können erzeugt werden, indem ein Pixelraster auf die Zahlenebene gelegt und so jedem Pixel ein Wert von  zugeordnet wird. Wenn die Folge mit dem entsprechenden  beschränkt ist, es also zur Mandelbrot-Menge gehört, wird das Pixel z. B. schwarz gefärbt'
+    let graf =
+      'Das H-Fraktel oder auch Line-Fractal geht von einer einzigen Linie aus. An den Endpunkten wird nun jeweils eine weitere kürzere Linie mit einer Drehung von 90° gezeichnet, wobei der Mittelpunkt dieser Linie vom Endpunkt der vorherigen Linie bestimmt. '
+
     // this.objectList.push(new MiraFractal('2d', this, 'MIRA', '#FFFFFF', 5, window.innerWidth, window.innerHeight))
-    this.objectList.push(new Cube('3d', this, 'Cube', 'white'))
-    this.objectList.push(new Torus('3d', this, 'Torus', 'white'))
-    this.objectList.push(new TorusKnot('3d', this, 'Torus Knot', 'white'))
-    this.objectList.push(new SierpinskiTriangle(this.ctx, 1, 'normalCanvas', this, 'Sierpinski Triangle', 'white'))
-    this.objectList.push(new SierpinskiPyramide(0, 2, 0, 2, 2, 1, '3d', this, 'Sierpinski Pyramide', 'white'))
-    this.objectList.push(new SierpinskiCarpet(0, 0, 3, 0, 0, '3d', this, 'Sierpinski Carpet', 'white'))
-    this.objectList.push(new Mengersponge(0, 0, 0, 3, 0, 0, '3d', this, 'Mengersponge', 'white'))
-    this.objectList.push(new KochSnowflake(this.ctx, 5, 'normalCanvas', this, 'Koch Curve', 'white'))
-    this.objectList.push(new PythagorasTree(this.ctx, 0, 'normalCanvas', this, 'Pythagoras Tree', 'red'))
-    this.objectList.push(new BarnsleyFern(this.ctx, 1000, 'normalCanvas', this, 'Barnsley Fern', 'white'))
+    this.objectList.push(new Cube(cube, '3d', this, 'Cube', 'white'))
+    this.objectList.push(new Torus(torus, '3d', this, 'Torus', 'white'))
+    this.objectList.push(new TorusKnot(torusKnot, '3d', this, 'Torus Knot', 'white'))
+    this.objectList.push(
+      new SierpinskiTriangle(this.ctx, 1, SirTri, 'normalCanvas', this, 'Sierpinski Triangle', 'white'),
+    )
+    this.objectList.push(new SierpinskiPyramide(0, 2, 0, 2, 2, 1, sirPyr, '3d', this, 'Sierpinski Pyramide', 'white'))
+    this.objectList.push(new SierpinskiCarpet(0, 0, 3, 0, 0, sirCar, '3d', this, 'Sierpinski Carpet', 'white'))
+    this.objectList.push(new Mengersponge(0, 0, 0, 3, 0, 0, menSp, '3d', this, 'Mengersponge', 'white'))
+    this.objectList.push(new KochSnowflake(this.ctx, 5, kochSnow, 'normalCanvas', this, 'Koch Curve', 'white'))
+    this.objectList.push(new PythagorasTree(this.ctx, 0, pyt, 'normalCanvas', this, 'Pythagoras Tree', 'red'))
+    this.objectList.push(new BarnsleyFern(this.ctx, 1000, barnsley, 'normalCanvas', this, 'Barnsley Fern', 'white'))
     // this.objectList.push(new PixiShape('2d', this, 'PIXI SHAPE 2D', 'red'))
-    this.objectList.push(new DiamindSquare('3d', this, 'Diamond Square', 'white'))
-    this.objectList.push(new MandelbrotSet(this.ctx, 350, 'normalCanvas', this, 'Mandelbrot', 'red'))
-    this.objectList.push(new LineFractal(this.ctx, 350, 'normalCanvas', this, 'Graftal', 'white'))
+    this.objectList.push(new DiamindSquare(diamond, '3d', this, 'Diamond Square', 'white'))
+    this.objectList.push(new MandelbrotSet(this.ctx, 350, mandel, 'normalCanvas', this, 'Mandelbrot', 'red'))
+    this.objectList.push(new LineFractal(this.ctx, 350, graf, 'normalCanvas', this, 'Graftal', 'white'))
   }
 
   public start(): void {

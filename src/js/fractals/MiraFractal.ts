@@ -33,6 +33,7 @@ export default class MiraFractal extends Fractral {
   private ratio: number
 
   public constructor(
+    info: string,
     type: string,
     scene: Scene,
     name: string,
@@ -41,7 +42,7 @@ export default class MiraFractal extends Fractral {
     width: number,
     height: number,
   ) {
-    super(type, scene, name, color, level)
+    super(info, type, scene, name, color, level)
     this.width = width
     this.height = height
     this.b = 0.9998

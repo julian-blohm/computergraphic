@@ -1,5 +1,4 @@
 import Scene from '../scene/Scene'
-import MandelbrotSet from './Mandelbrot'
 
 export default abstract class Fractral {
   private scene: Scene
@@ -9,13 +8,15 @@ export default abstract class Fractral {
   private type: string
   private segments: number
   private smooth: number
+  private info: string
 
-  public constructor(type: string, scene: Scene, name: string, color = 'white', level = 0) {
+  public constructor(info: string, type: string, scene: Scene, name: string, color = 'white', level = 0) {
     this.scene = scene
     this.name = name
     this.color = color
     this.level = level
     this.type = type
+    this.info = info
   }
   //gets overwritten
   public init() {}
@@ -42,14 +43,24 @@ export default abstract class Fractral {
 
   public renderMenu(): void {
     const menu = document.getElementById('menu')
+    const info = document.getElementById('info-container')
+
     this.removeMenu(menu)
+    this.removeMenu(info)
     this.addMenu(menu)
+    this.addInfoText(info)
   }
 
   private removeMenu(menu: HTMLElement): void {
     while (menu.firstChild) {
       menu.removeChild(menu.firstChild)
     }
+  }
+
+  private addInfoText(menu: HTMLElement): void {
+    const info = document.createElement('div')
+    info.innerHTML = '<br/><p>' + this.getInfo + '</p>'
+    menu.appendChild(info)
   }
 
   private addMenu(menu: HTMLElement): void {
@@ -208,7 +219,7 @@ export default abstract class Fractral {
     } else if (this.getName === 'Cube') {
       div.innerHTML =
         '<label>Polygon Level</label>\
-      <br />\
+        <br />\
       <select id="level">\
         <option value="0">0</option>\
         <option value="1">1</option>\
@@ -261,9 +272,9 @@ export default abstract class Fractral {
   </select>\
   <br />\
   '
-    }else if (this.getName === 'Sierpinski Carpet' || this.getName === 'Mengersponge') {
+    } else if (this.getName === 'Sierpinski Carpet' || this.getName === 'Mengersponge') {
       div.innerHTML =
-      '<label>Iteration</label>\
+        '<label>Iteration</label>\
       <br />\
         <select id="level">\
           <option value="0">0</option>\
@@ -336,6 +347,10 @@ export default abstract class Fractral {
 
   public get getType(): string {
     return this.type
+  }
+
+  public get getInfo(): string {
+    return this.info
   }
 
   //SET Methods

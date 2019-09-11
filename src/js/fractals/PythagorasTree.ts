@@ -5,8 +5,8 @@ export default class PythagorasTree extends Fractral {
   private ctx: any
   private f: number
 
-  public constructor(ctx: any, level: number, type: string, scene: Scene, name: string, color: string) {
-    super(type, scene, name, color, level)
+  public constructor(ctx: any, level: number, info: string, type: string, scene: Scene, name: string, color: string) {
+    super(info, type, scene, name, color, level)
     this.ctx = ctx
   }
 
