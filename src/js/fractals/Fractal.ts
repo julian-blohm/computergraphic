@@ -270,6 +270,16 @@ export default abstract class Fractral {
     <option value="green">Grün</option>\
     <option value="yellow">Gelb</option>\
   </select>\
+  <select class="hide" id="level">\
+    <option value="4">4</option>\
+    <option value="8">8</option>\
+    <option value="16">16</option>\
+    <option value="32">32</option>\
+    <option value="64">64</option>\
+    <option value="128">128</option>\
+    <option value="256">256</option>\
+    <option value="512">512</option>\
+  </select>\
   <br />\
   '
     } else if (this.getName === 'Sierpinski Carpet' || this.getName === 'Mengersponge') {
