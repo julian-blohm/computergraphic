@@ -9,7 +9,14 @@ export default class KochSnowflake extends Fractral {
     this.ctx = ctx
   }
 
+  private centerCanvas(): void {
+    let canvas = document.getElementById('normalCanvas')
+    canvas.style.marginLeft = '25%'
+    canvas.style.marginTop = '10%'
+  }
+
   public init(): void {
+    this.centerCanvas()
     this.ctx.beginPath()
     this.ctx.stroke()
     this.ctx.closePath()

@@ -13,8 +13,14 @@ export default class LineFractal extends Fractral {
     this.f = Math.sqrt(2)
     this.ctx = ctx
   }
+  private centerCanvas(): void {
+    let canvas = document.getElementById('normalCanvas')
+    canvas.style.marginLeft = '25%'
+    canvas.style.marginTop = '10%'
+  }
 
   public init(): void {
+    this.centerCanvas()
     this.hor(300, 90, 250)
   }
 

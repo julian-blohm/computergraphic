@@ -17,7 +17,14 @@ export default class SierpinskiTriangle extends Fractral {
     this.maxDepth = 10
   }
 
+  private centerCanvas(): void {
+    let canvas = document.getElementById('normalCanvas')
+    canvas.style.marginLeft = '25%'
+    canvas.style.marginTop = '10%'
+  }
+
   public init(): void {
+    this.centerCanvas()
     this.calcSierpinskiTriangle()
   }
 

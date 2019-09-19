@@ -14,7 +14,14 @@ export default class BarnsleyFern extends Fractral {
     this.ctx = ctx
   }
 
+  private centerCanvas(): void {
+    let canvas = document.getElementById('normalCanvas')
+    canvas.style.marginLeft = '0'
+    canvas.style.marginTop = '0'
+  }
+
   public init(): void {
+    this.centerCanvas()
     this.calcBarnsleyFern()
   }
 

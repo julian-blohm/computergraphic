@@ -9,8 +9,14 @@ export default class PythagorasTree extends Fractral {
     super(info, type, scene, name, color, level)
     this.ctx = ctx
   }
+  private centerCanvas(): void {
+    let canvas = document.getElementById('normalCanvas')
+    canvas.style.marginLeft = '25%'
+    canvas.style.marginTop = '0%'
+  }
 
   public init(): void {
+    this.centerCanvas()
     this.calcPythagorasTree(275, 500, 375, 500, 0)
   }
 

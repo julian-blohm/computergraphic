@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 * {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
@@ -75,8 +79,6 @@ canvas {
 #normalCanvas {
   background: black;
   margin: 0 auto;
-  width: 100vw;
-  height: 100vh;
 }
 
 .hide {
