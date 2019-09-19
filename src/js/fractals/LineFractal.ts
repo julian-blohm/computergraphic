@@ -4,6 +4,9 @@ import Scene from '../scene/Scene'
 export default class LineFractal extends Fractral {
   private ctx: any
   private f: number
+  private canvas: any = document.getElementById('normalCanvas')
+  private w: number = this.canvas.width
+  private h: number = this.canvas.height
 
   public constructor(ctx: any, level: number, info: string, type: string, scene: Scene, name: string, color: string) {
     super(info, type, scene, name, color, level)

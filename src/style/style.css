@@ -75,8 +75,8 @@ canvas {
 #normalCanvas {
   background: black;
   margin: 0 auto;
-  width: 1920px;
-  height: 1080px;
+  width: 100vw;
+  height: 100vh;
 }
 
 .hide {
