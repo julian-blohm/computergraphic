@@ -119,7 +119,7 @@ export default class Scene {
     this.objectList.push(
       new SierpinskiTriangle(this.ctx, 1, SirTri, 'normalCanvas', this, 'Sierpinski Triangle', 'white'),
     )
-    this.objectList.push(new SierpinskiPyramide(0, 2, 0, 2, 2, 1, sirPyr, '3d', this, 'Sierpinski Pyramide', 'white'))
+    this.objectList.push(new SierpinskiPyramide(0, 1, 0, 2, 2, 1, sirPyr, '3d', this, 'Sierpinski Pyramide', 'white'))
     this.objectList.push(new SierpinskiCarpet(0, 0, 3, 0, 0, sirCar, '3d', this, 'Sierpinski Carpet', 'white'))
     this.objectList.push(new Mengersponge(0, 0, 0, 3, 0, 0, menSp, '3d', this, 'Mengersponge', 'white'))
     this.objectList.push(new KochSnowflake(this.ctx, 5, kochSnow, 'normalCanvas', this, 'Koch Curve', 'white'))
