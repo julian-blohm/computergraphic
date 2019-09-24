@@ -21,8 +21,8 @@ export default class KochSnowflake extends Fractral {
     this.ctx.stroke()
     this.ctx.closePath()
     this.calcKochCurve([50, 150], [500, 150], this.getLevel)
-    this.calcKochCurve([270, 490], [50, 150], this.getLevel)
-    this.calcKochCurve([500, 150], [270, 490], this.getLevel)
+    this.calcKochCurve([275, 505], [50, 150], this.getLevel)
+    this.calcKochCurve([500, 150], [275, 505], this.getLevel)
   }
 
   private calcKochCurve(A: number[], B: number[], level: number): void {
