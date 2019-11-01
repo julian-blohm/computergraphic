@@ -38,12 +38,12 @@ export default class DiamindSquare extends Fractral {
     }
     let material = new _three.MeshBasicMaterial({
       color: this.getColor,
-      wireframe: true,
+      wireframe: this.getFill,
     })
 
     let materialGround = new _three.MeshBasicMaterial({
       color: this.getColor,
-      wireframe: true,
+      wireframe: this.getFill,
     })
     let mesh = new _three.Mesh(geometry, material)
 
@@ -60,9 +60,6 @@ export default class DiamindSquare extends Fractral {
     this.segmentsSqu = parseInt((document.getElementById('level') as HTMLTextAreaElement).value)
     this.deepth = -1
     this.smoothSqu = parseInt((document.getElementById('smooth') as HTMLTextAreaElement).value)
-    console.log('init')
-    console.log(this.segmentsSqu)
-    console.log(this.smoothSqu)
     //## Austauschen mit var
     for (var i = 0; i <= this.segmentsSqu; i++) {
       this.terrain[i] = []

@@ -9,6 +9,7 @@ export default abstract class Fractral {
   private segments: number
   private smooth: number
   private info: string
+  private fill: boolean
 
   public constructor(info: string, type: string, scene: Scene, name: string, color = 'white', level = 0) {
     this.scene = scene
@@ -17,6 +18,7 @@ export default abstract class Fractral {
     this.level = level
     this.type = type
     this.info = info
+    this.fill = true
   }
   //gets overwritten
   public init() {}
@@ -26,13 +28,15 @@ export default abstract class Fractral {
       const color = (document.getElementById('color') as HTMLTextAreaElement).value
       const segments = (document.getElementById('level') as HTMLTextAreaElement).value
       const smooth = (document.getElementById('smooth') as HTMLTextAreaElement).value
+      const fill = (document.getElementById('fill') as HTMLTextAreaElement).value
       this.color = color
       this.segments = parseInt(segments)
       this.smooth = parseInt(smooth)
-      // console.log('SSSSSSSSSSSSSS')
-      // console.log(this.color)
-      // console.log(this.segments)
-      // console.log(this.smooth)
+      if (fill === 'fill') {
+        this.fill = false
+      } else {
+        this.fill = true
+      }
     }
     const level = (document.getElementById('level') as HTMLTextAreaElement).value
     const color = (document.getElementById('color') as HTMLTextAreaElement).value
@@ -215,6 +219,12 @@ export default abstract class Fractral {
     <option value="yellow">Gelb</option>\
   </select>\
   <br />\
+  <label>Polygone füllen</label>\
+  <br />\
+  <select id="fill">\
+    <option value="noFill">nein</option>\
+    <option value="fill">ja</option>\
+  </select>  <br />\
  '
     } else if (this.getName === 'Cube') {
       div.innerHTML =
@@ -370,5 +380,14 @@ export default abstract class Fractral {
 
   private set setLevel(level: number) {
     this.level = level
+  }
+
+  public get getFill(): boolean {
+    return this.fill
+  }
+
+  //SET Methods
+  private set setFill(fill: boolean) {
+    this.fill = fill
   }
 }
