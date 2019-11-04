@@ -36,10 +36,13 @@ export default class DiamindSquare extends Fractral {
         index++
       }
     }
-    let material = new _three.MeshBasicMaterial({
+    let material = new _three.MeshPhongMaterial({
       color: this.getColor,
       wireframe: this.getFill,
     })
+    
+    geometry.computeFlatVertexNormals();
+    material.flatShading = true;
 
     let materialGround = new _three.MeshBasicMaterial({
       color: this.getColor,
